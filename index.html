@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bill Payment Portal</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #F5F3EF;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .portal { max-width: 860px; margin: 0 auto; }
+
+  .portal-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #C8B99A;
+  }
+
+  .portal-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #2C3E50;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .portal-sub {
+    font-size: 20px;
+    color: #5D6D7E;
+    font-style: italic;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #7F8C8D;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2rem 0 0.85rem;
+    padding-left: 4px;
+    font-family: Arial, sans-serif;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+
+  a.card, div.card {
+    background: #FFFFFF;
+    border: 2px solid #D5C9B8;
+    border-radius: 14px;
+    padding: 1.2rem 1.4rem 1rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  }
+
+  a.card:hover {
+    border-color: #2980B9;
+    box-shadow: 0 4px 16px rgba(41,128,185,0.13);
+    transform: translateY(-2px);
+    cursor: pointer;
+  }
+
+  .card-icon { font-size: 28px; margin-bottom: 4px; }
+
+  .card-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a1a;
+    line-height: 1.2;
+    font-family: Arial, sans-serif;
+  }
+
+  .card-provider { font-size: 15px; color: #5D6D7E; font-family: Arial, sans-serif; }
+
+  .card-amount {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-top: 4px;
+    font-family: Arial, sans-serif;
+  }
+
+  .card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+    width: fit-content;
+    font-family: Arial, sans-serif;
+  }
+
+  .badge-online  { background: #D5EBF5; color: #1A5276; }
+  .badge-auto    { background: #D5F5E3; color: #1E8449; }
+  .badge-phone   { background: #E8DAFF; color: #6C3483; }
+  .badge-check   { background: #FDEBD0; color: #A04000; }
+  .badge-paidoff { background: #E8F8F5; color: #1A7A5E; }
+
+  .click-hint {
+    font-size: 13px;
+    color: #2980B9;
+    font-style: italic;
+    margin-top: 5px;
+    font-family: Arial, sans-serif;
+  }
+
+  .note-box {
+    background: #EAF2FB;
+    border: 1.5px solid #AED6F1;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 17px;
+    color: #1A5276;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+  }
+  .note-box strong { color: #154360; }
+
+  .alert-box {
+    background: #FEF9E7;
+    border: 1.5px solid #F9E79F;
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 15px;
+    color: #7D6608;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    font-size: 14px;
+    color: #AAA;
+    font-family: Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="portal">
+
+  <div class="portal-header">
+    <div class="portal-title">🏠 My Bill Payment Portal</div>
+    <div class="portal-sub">Click any tile to go directly to that website</div>
+  </div>
+
+  <!-- MORTGAGES -->
+  <div class="section-label">🏦 Mortgages</div>
+  <div class="cards">
+
+    <a class="card" href="https://mypennymac.pennymac.com/" target="_blank" rel="noopener">
+      <div class="card-icon">🏡</div>
+      <div class="card-name">Penny Mac</div>
+      <div class="card-provider">First Mortgage</div>
+      <div class="card-amount">$4,164.95 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens pennymac.com</div>
+    </a>
+
+    <a class="card" href="https://www.carringtonmortgage.com/login" target="_blank" rel="noopener">
+      <div class="card-icon">🏡</div>
+      <div class="card-name">Carrington</div>
+      <div class="card-provider">Mortgage</div>
+      <div class="card-amount">$2,569.93 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens carringtonmortgage.com</div>
+    </a>
+
+    <a class="card" href="https://www.citizensbank.com/customer-service/pay-my-loan.aspx" target="_blank" rel="noopener">
+      <div class="card-icon">🏡</div>
+      <div class="card-name">Citizens Bank</div>
+      <div class="card-provider">Mortgage</div>
+      <div class="card-amount">$2,257.45 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens citizensbank.com</div>
+    </a>
+
+  </div>
+
+  <!-- UTILITIES -->
+  <div class="section-label">⚡ Utilities</div>
+  <div class="cards">
+
+    <a class="card" href="https://www.sce.com/my-account/pay-my-bill" target="_blank" rel="noopener">
+      <div class="card-icon">💡</div>
+      <div class="card-name">SCE</div>
+      <div class="card-provider">Electricity — due 9th</div>
+      <div class="card-amount">~$219 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens sce.com</div>
+    </a>
+
+    <a class="card" href="https://myaccount.socalgas.com/ui/login" target="_blank" rel="noopener">
+      <div class="card-icon">🔥</div>
+      <div class="card-name">SoCal Gas</div>
+      <div class="card-provider">Gas — due 9th</div>
+      <div class="card-amount">~$177 / mo</div>
+      <div class="card-badge badge-auto">✅ Autopay — no action needed</div>
+      <div class="click-hint">↗ Opens socalgas.com</div>
+    </a>
+
+    <a class="card" href="https://www.simivalley.org/departments/public-works/utilities" target="_blank" rel="noopener">
+      <div class="card-icon">💧</div>
+      <div class="card-name">City of Simi Valley</div>
+      <div class="card-provider">Water — due 2nd</div>
+      <div class="card-amount">See bill</div>
+      <div class="card-badge badge-auto">✅ Autopay via Citi card</div>
+      <div class="click-hint">↗ Opens simivalley.org</div>
+    </a>
+
+    <a class="card" href="https://www.spectrum.net/login/" target="_blank" rel="noopener">
+      <div class="card-icon">📺</div>
+      <div class="card-name">Spectrum</div>
+      <div class="card-provider">TV &amp; Internet — due 1st</div>
+      <div class="card-amount">See bill</div>
+      <div class="card-badge badge-auto">✅ Autopay — no action needed</div>
+      <div class="click-hint">↗ Opens spectrum.net</div>
+    </a>
+
+  </div>
+
+  <!-- LOANS & FINANCING -->
+  <div class="section-label">🚗 Loans &amp; Financing</div>
+  <div class="cards">
+
+    <a class="card" href="https://www.tdautofinance.com" target="_blank" rel="noopener">
+      <div class="card-icon">🚗</div>
+      <div class="card-name">TD Auto Finance</div>
+      <div class="card-provider">Car Loan — Andres pays — due 13th</div>
+      <div class="card-amount">$626.22 / mo</div>
+      <div class="card-badge badge-phone">📞 Andres pays by phone</div>
+      <div class="click-hint">↗ Opens tdautofinance.com</div>
+    </a>
+
+    <a class="card" href="https://solarservicing.myaccountinfo.com/Account/LogOn" target="_blank" rel="noopener">
+      <div class="card-icon">☀️</div>
+      <div class="card-name">Solar Panels</div>
+      <div class="card-provider">formerly Mosaic — now Solar Servicing — due 20th</div>
+      <div class="card-amount">$237.64 / mo</div>
+      <div class="card-badge badge-auto">✅ Autopay — no action needed</div>
+      <div class="click-hint">↗ Opens solarservicing.myaccountinfo.com</div>
+    </a>
+
+  </div>
+
+  <!-- INSURANCE & HOA -->
+  <div class="section-label">🛡️ Insurance &amp; HOA</div>
+  <div class="cards">
+
+    <a class="card" href="https://www.foremost.com" target="_blank" rel="noopener">
+      <div class="card-icon">🛡️</div>
+      <div class="card-name">Foremost Insurance</div>
+      <div class="card-provider">Homeowners — Box Elder — due 1st</div>
+      <div class="card-amount">$115.93 / mo</div>
+      <div class="card-badge badge-auto">✅ Autopay — no action needed</div>
+      <div class="click-hint">↗ Opens foremost.com</div>
+    </a>
+
+    <a class="card" href="https://portal.emmonsco.net/public" target="_blank" rel="noopener">
+      <div class="card-icon">🏘️</div>
+      <div class="card-name">Madison HOA</div>
+      <div class="card-provider">Online Account — due 1st</div>
+      <div class="card-amount">$179.00 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens portal.emmonsco.net</div>
+    </a>
+
+    <a class="card" href="https://rossmorganco.com/user-login/" target="_blank" rel="noopener">
+      <div class="card-icon">🏘️</div>
+      <div class="card-name">Ross Morgan HOA</div>
+      <div class="card-provider">Online Account — sign up required first</div>
+      <div class="card-amount">$179.50 / mo</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens rossmorganco.com</div>
+    </a>
+
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section-label">🧹 Services</div>
+  <div class="cards">
+
+    <a class="card" href="https://www.wm.com" target="_blank" rel="noopener">
+      <div class="card-icon">🗑️</div>
+      <div class="card-name">Waste Management</div>
+      <div class="card-provider">Trash — Autopay from account</div>
+      <div class="card-amount">$76.92 / mo</div>
+      <div class="card-badge badge-auto">✅ Autopay — no action needed</div>
+      <div class="click-hint">↗ Opens wm.com</div>
+    </a>
+
+    <a class="card" href="https://www.ecoshield.com" target="_blank" rel="noopener">
+      <div class="card-icon">🐛</div>
+      <div class="card-name">EcoShield</div>
+      <div class="card-provider">Pest Control — every other month — due 1st</div>
+      <div class="card-amount">$99.00</div>
+      <div class="card-badge badge-online">💳 Paid via Credit Card</div>
+      <div class="click-hint">↗ Opens ecoshield.com</div>
+    </a>
+
+    <div class="card">
+      <div class="card-icon">🌿</div>
+      <div class="card-name">Juan — Gardener</div>
+      <div class="card-provider">Both houses — due 1st</div>
+      <div class="card-amount">$240.00 / mo</div>
+      <div class="card-badge badge-check">✉️ Pay by check</div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🛁</div>
+      <div class="card-name">Spa Service</div>
+      <div class="card-provider">Monthly service — due 1st</div>
+      <div class="card-amount">$200.00 / mo</div>
+      <div class="card-badge badge-check">✉️ Pay by check</div>
+    </div>
+
+  </div>
+
+  <!-- CREDIT CARDS -->
+  <div class="section-label">💳 Credit Cards</div>
+  <div class="cards">
+
+    <a class="card" href="https://online.citi.com/US/login.do" target="_blank" rel="noopener">
+      <div class="card-icon">💳</div>
+      <div class="card-name">CitiBank CC</div>
+      <div class="card-provider">Maria pays</div>
+      <div class="card-amount">See statement</div>
+      <div class="card-badge badge-online">🌐 Click to Pay Online</div>
+      <div class="click-hint">↗ Opens citi.com</div>
+    </a>
+
+    <a class="card" href="https://www.lowes.com/l/credit/lowes-credit-center" target="_blank" rel="noopener">
+      <div class="card-icon">🔨</div>
+      <div class="card-name">Lowe's</div>
+      <div class="card-provider">Andres pays — due 1st</div>
+      <div class="card-amount">See statement</div>
+      <div class="card-badge badge-phone">📞 Andres handles this</div>
+    </a>
+
+    <div class="card">
+      <div class="card-icon">🛍️</div>
+      <div class="card-name">Nordstrom</div>
+      <div class="card-provider">Paid off May 2025</div>
+      <div class="card-amount">$0.00 — Paid off!</div>
+      <div class="card-badge badge-paidoff">✅ Nothing owed</div>
+    </div>
+
+  </div>
+
+  <!-- ALERT -->
+  <div class="alert-box">
+    ⚠️ <strong>Important note about Solar Panels:</strong> Mosaic (the original solar loan company) went through bankruptcy in 2025. Your loan has been transferred to <strong>Solar Servicing LLC</strong>. Autopay should continue as normal, but it's worth logging in to verify your account is still active.
+  </div>
+
+  <!-- INFO BOX -->
+  <div class="note-box">
+    💡 <strong>How to use this page:</strong><br><br>
+    • Tiles that say <strong>"Click to Pay Online"</strong> will open that company's website when you click them.<br>
+    • Tiles that say <strong>"Autopay"</strong> are paid automatically — you don't need to do anything.<br>
+    • Tiles that say <strong>"Andres handles this"</strong> or <strong>"Pay by check"</strong> are handled separately — no clicking needed.
+  </div>
+
+  <div class="footer">My Bill Portal &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; Double-click this file anytime to open it</div>
+
+</div>
+</body>
+</html>
