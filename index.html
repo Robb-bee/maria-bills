@@ -154,11 +154,90 @@
     color: #AAA;
     font-family: Arial, sans-serif;
   }
+
+  /* ── Password gate ── */
+  #lock-screen {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #F5F3EF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+  }
+  #lock-box {
+    background: #fff;
+    border: 2px solid #D5C9B8;
+    border-radius: 18px;
+    padding: 2.5rem 2rem;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  }
+  #lock-box .lock-icon { font-size: 44px; margin-bottom: 10px; }
+  #lock-box h2 {
+    font-size: 22px;
+    color: #2C3E50;
+    margin-bottom: 8px;
+    font-family: Georgia, serif;
+  }
+  #lock-box p {
+    font-size: 15px;
+    color: #5D6D7E;
+    margin-bottom: 20px;
+  }
+  #lock-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 17px;
+    border: 2px solid #D5C9B8;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  #lock-input:focus { border-color: #2980B9; }
+  #lock-submit {
+    width: 100%;
+    background: #2980B9;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #lock-submit:hover { background: #1A6FA0; }
+  #lock-error {
+    color: #C0392B;
+    font-size: 14px;
+    margin-top: 12px;
+    display: none;
+  }
+  #page-content { display: none; }
 </style>
 </head>
 <body>
 
+<!-- ── Password lock screen ── -->
+<div id="lock-screen">
+  <div id="lock-box">
+    <div class="lock-icon">🔒</div>
+    <h2>My Bill Payment Portal</h2>
+    <p>Please enter the password to continue</p>
+    <input type="password" id="lock-input" placeholder="Password" autocomplete="off" />
+    <button id="lock-submit">Unlock</button>
+    <div id="lock-error">That password isn't correct. Please try again.</div>
+  </div>
+</div>
+
+<div id="page-content">
 <div class="portal">
+
 
   <div class="portal-header">
     <div class="portal-title">🏠 My Bill Payment Portal</div>
@@ -384,5 +463,37 @@
   <div class="footer">My Bill Portal &nbsp;·&nbsp; Updated June 2026 &nbsp;·&nbsp; Double-click this file anytime to open it</div>
 
 </div>
+</div>
+
+<script>
+  const SITE_PASSWORD = "!Santorini6D";
+  const lockScreen = document.getElementById('lock-screen');
+  const pageContent = document.getElementById('page-content');
+  const lockInput = document.getElementById('lock-input');
+  const lockSubmit = document.getElementById('lock-submit');
+  const lockError = document.getElementById('lock-error');
+
+  function tryUnlock() {
+    if (lockInput.value === SITE_PASSWORD) {
+      lockScreen.style.display = 'none';
+      pageContent.style.display = 'block';
+      sessionStorage.setItem('billPortalUnlocked', 'true');
+    } else {
+      lockError.style.display = 'block';
+      lockInput.value = '';
+      lockInput.focus();
+    }
+  }
+
+  lockSubmit.addEventListener('click', tryUnlock);
+  lockInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+  if (sessionStorage.getItem('billPortalUnlocked') === 'true') {
+    lockScreen.style.display = 'none';
+    pageContent.style.display = 'block';
+  } else {
+    lockInput.focus();
+  }
+</script>
 </body>
 </html>
